@@ -7,7 +7,8 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { orange, amber } from "@mui/material/colors";
-
+import Pagination from "./Pagination";
+import ButtonAppBar from "./Navbar";
 const PrimaryColors = orange[500];
 const amberPrimary = amber[800];
 // const
@@ -48,7 +49,9 @@ let theme = createTheme({
 
 export default function FloatingActionButtons() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
+      <ButtonAppBar />
+
       <Box
         sx={{
           "& > :not(style)": { m: 1 },
@@ -59,20 +62,23 @@ export default function FloatingActionButtons() {
           alignItems: "center",
         }}
       >
-        <Fab aria-label='add' size='small' color='error'>
-          <AddIcon sx={{ color: "white" }} />
-        </Fab>
-        <Fab color='secondary' aria-label='edit' size='medium'>
-          <EditIcon />
-        </Fab>
-        <Fab variant='extended' color='primary' size='large'>
-          <NavigationIcon sx={{ mr: 1 }} />
-          Navigate
-        </Fab>
-        <Fab aria-label='like' size='small'>
-          <FavoriteIcon />
-        </Fab>
+        <ThemeProvider theme={theme}>
+          <Fab aria-label='add' size='small' color='error'>
+            <AddIcon sx={{ color: "white" }} />
+          </Fab>
+          <Fab color='secondary' aria-label='edit' size='medium'>
+            <EditIcon />
+          </Fab>
+          <Fab variant='extended' color='primary' size='large'>
+            <NavigationIcon sx={{ mr: 1 }} />
+            Navigate
+          </Fab>
+          <Fab aria-label='like' size='small'>
+            <FavoriteIcon />
+          </Fab>
+        </ThemeProvider>
+        <Pagination />
       </Box>
-    </ThemeProvider>
+    </>
   );
 }
